@@ -1,75 +1,37 @@
-🤖 Medico Chatbot – Healthcare FAQ Assistant
-The Medico Chatbot is a simple, rule-based chatbot that uses Natural Language Processing (NLP) with NLTK to answer user queries based on a dataset of frequently asked questions in the medical domain.
+# 🩺 MediChat
 
-📂 Dataset
-The chatbot uses a CSV file named medical.csv with two main columns:
+MediChat is an AI-based medical chatbot designed to provide preliminary symptom analysis and information. It uses natural language processing (NLP) to interpret user input and guide them with potential health-related insights.
 
-Indent: The user query or keyword.
+---
 
-Reply: The appropriate answer the chatbot should return.
+## 📌 Features
 
-Example:
+- 🗣️ Accepts natural language queries from users
+- 🏥 Suggests possible conditions based on symptoms
+- 📚 Easy to extend with more symptoms and conditions
 
-Indent,Reply
-headache,Try to rest and drink plenty of fluids. Consult a doctor if it persists.
-fever,Please take paracetamol and monitor your temperature regularly.
-...
+---
 
+## 🛠️ Tech Stack
 
+- 🐍 Python
+- 🧪 Scikit-learn 
 
+---
 
-🔧 Requirements
-Install the necessary Python libraries:
-!pip install nltk pandas
-Download the required NLTK data:
-import nltk
-nltk.download('punkt')
-nltk.download('stopwords')
-🧠 How It Works
+## 🚀 Getting Started
 
+```bash
+# Clone the repo
+git clone https://github.com/SachinSarvesh17/MediChat.git
+cd MediChat
 
-1. User Input Tokenization and Filtering
-Converts user input to lowercase
+# Create a virtual environment (optional but recommended)
+python -m venv venv
+source venv/bin/activate  # or venv\Scripts\activate on Windows
 
-Tokenizes the sentence
+# Install dependencies
+pip install -r requirements.txt
 
-Removes stop words and punctuation
-tokens = word_tokenize(user_input.lower())
-filtered_tokens = [token for token in tokens if token.isalnum() and token not in stop_words]
-
-2. Matching Against Dataset
-Compares filtered tokens with each row's Indent tokens.
-
-If a match is found, it returns the corresponding Reply.
-if any(keyword in filtered_tokens for keyword in word_tokenize(rows["Indent"].lower())):
-    return rows["Reply"]
-🗨️ Chatbot Flow
-def chat():
-    print("Welcome to the Medico Chatbot! How can I assist you today?")
-    while True:
-        user_input = input("User: ")
-        if user_input.lower() in ['exit', 'quit', 'bye', ...]:  # multiple ways to exit
-            print("Chatbot: Goodbye! Have a great day.")
-            break
-        response = fetch_response(user_input)
-        print("Chatbot:", response)
-💬 Example Conversation
-User: I have a headache
-Chatbot: Try to rest and drink plenty of fluids. Consult a doctor if it persists.
-
-User: What should I do for fever?
-Chatbot: Please take paracetamol and monitor your temperature regularly.
-
-User: Bye
-Chatbot: Goodbye! Have a great day.
-
-
-📦 Output
-After execution, the chatbot saves the loaded dataset to a pickle file for later use:
-faq_df.to_pickle('faq.pkl')
-
-
-
-
-👤 Author
-Sachin Sarvesh S C
+# Run the chatbot
+python chat.py
